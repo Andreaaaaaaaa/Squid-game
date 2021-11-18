@@ -24,19 +24,20 @@
         }
         .result span {
             display: inline-block;
-            font-size: 24px;
-            width: 300px;
+            font-size: 32px;
+            width: 480px;
             background:radial-gradient(90.16% 143.01% at 15.32% 21.04%, rgba(165, 239, 255, 0.2) 0%, rgba(110, 191, 244, 0.0447917) 77.08%, rgba(70, 144, 213, 0) 100%);
             background-blend-mode: overlay, normal;
             filter: drop-shadow(2px 16px 19px rgba(0, 0, 0, 0.09));
             backdrop-filter: blur(80px);
-            line-height: 36px;
+            line-height: 48px;
             color: #fff;
             margin: 5px;
             border-radius: 10px;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
-            padding: 24px 8px;
+            padding: 24px 16px;
         }
+     
         button, input, optgroup, select, textarea {
             color: inherit;
             font: inherit;
@@ -173,7 +174,7 @@
             return [0.1 * Math.random() + 0.01, -(0.1 * Math.random() + 0.01)];
         };
         var getKey = function(item){
-            return item.name + '-' + item.phone;
+            return item.phone + '-' + item.name;
         };
         var createHTML = function(){
             var html = [ '<ul>' ];
@@ -206,7 +207,7 @@
                 .map(function(m){
                   choosed[getKey(m)] = 1;
                   list[m.index].style.color = color;
-                  return m.name + '<br/>' + m.phone; 
+                  return '<font style="font-size:18px;">系统为你分配的对象是 ' + m.phone + '</font>' + '<br/>' + m.name + '<br/>' + '<font style="font-size:18px;"> 请为TA秘密准备一份圣诞礼物吧～ 价值在¥200左右哦</font>'; 
                 });
             localStorage.setItem('choosed', JSON.stringify(choosed));
             return ret;
@@ -253,7 +254,7 @@
                         if (ret.length === 0) {
                             $('#result').css('display', 'block').html('<span>已抽完</span>');
                             return
-                        }
+                        }　
                         $('#result').css('display', 'block').html('<span>' + ret.join('</span><span>') + '</span>');
                         TagCanvas.Reload('myCanvas');
                         setTimeout(function(){
